@@ -171,35 +171,42 @@ export default function HomeScreen() {
     }
   };
   return (
-    <div className="p-6 pb-24 space-y-6 animate-fade-in">
+    <div className="p-6 pb-24 space-y-6 animate-fade-in relative overflow-hidden">
+      {/* Background Concert Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-pulse stage-lights"></div>
+        <div className="absolute bottom-20 right-10 w-24 h-24 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000 stage-lights"></div>
+        <div className="absolute top-1/2 left-1/3 w-16 h-16 bg-accent/5 rounded-full blur-3xl animate-pulse delay-500 stage-lights"></div>
+      </div>
+      
       {/* Header */}
-      <div className="space-y-2">
-        <h1 className="text-2xl font-bold">Welcome back!</h1>
+      <div className="space-y-2 relative z-10">
+        <h1 className="text-2xl font-bold concert-wave">Welcome back to the festival! 🎵</h1>
         <p className="text-muted-foreground">Your privacy-first event verification dashboard</p>
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-2 gap-4">
-        <Card className="shadow-card bg-gradient-dark">
+      <div className="grid grid-cols-2 gap-4 relative z-10">
+        <Card className="shadow-card bg-gradient-dark glow-pulse concert-wave">
           <CardContent className="p-4 flex items-center space-x-3">
-            <div className="p-2 bg-primary/20 rounded-lg">
+            <div className="p-2 bg-primary/20 rounded-lg float-animation">
               <Shield className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="text-2xl font-bold">12</p>
-              <p className="text-sm text-muted-foreground">Total Proofs</p>
+              <p className="text-2xl font-bold sparkle-animation">12</p>
+              <p className="text-sm text-muted-foreground">Festival Proofs</p>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="shadow-card bg-gradient-dark">
+        <Card className="shadow-card bg-gradient-dark glow-pulse concert-wave" style={{ animationDelay: '0.1s' }}>
           <CardContent className="p-4 flex items-center space-x-3">
-            <div className="p-2 bg-warning/20 rounded-lg">
+            <div className="p-2 bg-warning/20 rounded-lg float-animation" style={{ animationDelay: '0.2s' }}>
               <Users className="w-5 h-5 text-warning" />
             </div>
             <div>
-              <p className="text-2xl font-bold">{crowdStats.totalAttendees.toLocaleString()}</p>
-              <p className="text-sm text-muted-foreground">Crowd Size</p>
+              <p className="text-2xl font-bold sparkle-animation">{crowdStats.totalAttendees.toLocaleString()}</p>
+              <p className="text-sm text-muted-foreground">Festival Crowd</p>
             </div>
           </CardContent>
         </Card>

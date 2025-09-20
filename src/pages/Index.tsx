@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Onboarding from "@/components/Onboarding";
+import EnhancedOnboarding from "@/components/EnhancedOnboarding";
 import UserSignup from "@/components/UserSignup";
 import SplashScreen from "@/components/SplashScreen";
 import TabNavigation from "@/components/TabNavigation";
@@ -60,7 +60,7 @@ const Index = () => {
   }
 
   if (showOnboarding) {
-    return <Onboarding onComplete={handleOnboardingComplete} />;
+    return <EnhancedOnboarding onComplete={handleOnboardingComplete} />;
   }
 
   if (showSignup) {

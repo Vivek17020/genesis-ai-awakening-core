@@ -5,6 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Calendar, MapPin, Users, Clock, Search, Filter, Zap, UserPlus } from "lucide-react";
 import eventsImage from "@/assets/events-icon.jpg";
+import nftEthDenver from "@/assets/nft-eth-denver.jpg";
+import nftZkSummit from "@/assets/nft-zk-summit.jpg";
+import nftPrivacyMeetup from "@/assets/nft-privacy-meetup.jpg";
+import nftCryptoWorkshop from "@/assets/nft-crypto-workshop.jpg";
 import { useZKIdentity } from "@/hooks/useZKIdentity";
 import { GroupSession } from "@/components/GroupSession";
 
@@ -26,7 +30,8 @@ export default function EventsScreen() {
       attendees: 4500,
       status: "upcoming",
       category: "Conference",
-      requiresProof: true
+      requiresProof: true,
+      nftImage: nftEthDenver
     },
     {
       id: "2",
@@ -38,7 +43,8 @@ export default function EventsScreen() {
       attendees: 800,
       status: "registration",
       category: "Research",
-      requiresProof: true
+      requiresProof: true,
+      nftImage: nftZkSummit
     },
     {
       id: "3",
@@ -50,7 +56,8 @@ export default function EventsScreen() {
       attendees: 150,
       status: "open",
       category: "Meetup",
-      requiresProof: false
+      requiresProof: false,
+      nftImage: nftPrivacyMeetup
     },
     {
       id: "4",
@@ -62,7 +69,8 @@ export default function EventsScreen() {
       attendees: 300,
       status: "upcoming",
       category: "Workshop",
-      requiresProof: true
+      requiresProof: true,
+      nftImage: nftCryptoWorkshop
     }
   ];
 
@@ -157,9 +165,19 @@ export default function EventsScreen() {
 
       {/* Events List */}
       <div className="space-y-4">
-        {events.map((event) => (
-          <Card key={event.id} className="shadow-card">
-            <CardHeader className="pb-3">
+        {events.map((event, index) => (
+          <Card key={event.id} className="shadow-card glow-pulse overflow-hidden relative" style={{ animationDelay: `${index * 0.1}s` }}>
+            {/* NFT Preview */}
+            <div className="absolute top-4 right-4 w-16 h-16 rounded-lg overflow-hidden border-2 border-primary/30 bg-gradient-primary/10 backdrop-blur-sm">
+              <img 
+                src={event.nftImage} 
+                alt={`${event.name} NFT`}
+                className="w-full h-full object-cover nft-reveal opacity-80 hover:opacity-100 transition-opacity duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+            </div>
+            
+            <CardHeader className="pb-3 pr-20">
               <div className="flex items-start justify-between">
                 <div className="space-y-1 flex-1">
                   <div className="flex items-center space-x-2">
@@ -210,10 +228,19 @@ export default function EventsScreen() {
 
                 <div className="flex gap-2 mt-4">
                   {joinedEvents.has(event.id) ? (
-                    <Badge variant="secondary" className="bg-success/20 text-success border-success/30 flex items-center gap-1">
-                      <Zap className="w-3 h-3" />
-                      ZK Proof Generated
-                    </Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="secondary" className="bg-success/20 text-success border-success/30 flex items-center gap-1 sparkle-animation">
+                        <Zap className="w-3 h-3" />
+                        ZK Proof Generated
+                      </Badge>
+                      <div className="w-8 h-8 rounded-full bg-gradient-primary/20 flex items-center justify-center border border-primary/30">
+                        <img 
+                          src={event.nftImage} 
+                          alt="NFT Badge"
+                          className="w-6 h-6 rounded-full object-cover"
+                        />
+                      </div>
+                    </div>
                   ) : (
                     <div className="flex gap-2">
                       <Button 
