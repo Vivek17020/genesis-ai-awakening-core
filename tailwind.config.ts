@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -27,23 +26,37 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))'
+				},
+				festival: {
+					orange: 'hsl(var(--festival-orange))',
+					pink: 'hsl(var(--festival-pink))',
+					cyan: 'hsl(var(--festival-cyan))'
+				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
+				success: {
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))'
+				},
+				warning: {
+					DEFAULT: 'hsl(var(--warning))',
+					foreground: 'hsl(var(--warning-foreground))'
+				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
-				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -52,26 +65,6 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				},
-				// Custom AI theme colors
-				ai: {
-					primary: '#0a192f',
-					secondary: '#112240',
-					highlight: '#64ffda',
-					text: '#8892b0',
-					blue: '#00a8e8',
-					purple: '#a688fa',
-					cyan: '#64ffda',
 				}
 			},
 			borderRadius: {
@@ -95,31 +88,13 @@ export default {
 					to: {
 						height: '0'
 					}
-				},
-				'pulse-opacity': {
-					'0%, 100%': { opacity: '0.6' },
-					'50%': { opacity: '0.9' }
-				},
-				'float': {
-					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-10px)' }
-				},
-				'flow': {
-					'0%': { transform: 'translateY(0) scale(1)', opacity: '0.5' },
-					'25%': { transform: 'translateY(-15px) scale(1.05)', opacity: '0.7' },
-					'50%': { transform: 'translateY(-25px) scale(1.1)', opacity: '0.9' },
-					'75%': { transform: 'translateY(-15px) scale(1.05)', opacity: '0.7' },
-					'100%': { transform: 'translateY(0) scale(1)', opacity: '0.5' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'pulse-slow': 'pulse-opacity 3s infinite ease-in-out',
-				'float': 'float 6s infinite ease-in-out',
-				'flow': 'flow 8s infinite ease-in-out'
+				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), require("@tailwindcss/line-clamp")],
 } satisfies Config;
