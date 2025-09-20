@@ -7,6 +7,7 @@ import { useZKIdentity } from "@/hooks/useZKIdentity";
 import { useToast } from "@/hooks/use-toast";
 import { QRCodeGenerator } from "@/components/QRCodeGenerator";
 import { QRCodeScanner } from "@/components/QRCodeScanner";
+import { DemoMode } from "@/components/DemoMode";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { CrowdSimulation } from "@/lib/crowdSimulation";
 import { Progress } from "@/components/ui/progress";
@@ -183,6 +184,11 @@ export default function HomeScreen() {
       <div className="space-y-2 relative z-10">
         <h1 className="text-2xl font-bold concert-wave">Welcome back to the festival! 🎵</h1>
         <p className="text-muted-foreground">Your privacy-first event verification dashboard</p>
+      </div>
+
+      {/* Demo Mode */}
+      <div className="relative z-10">
+        <DemoMode />
       </div>
 
       {/* Quick Stats */}

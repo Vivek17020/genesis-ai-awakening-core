@@ -1,9 +1,10 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'app.lovable.c0cd82ccb785457db930187a96264a58',
-  appName: 'ZKPresence',
+  appId: 'app.zkpresence.festival',
+  appName: 'ZKPresence Festival',
   webDir: 'dist',
+  bundledWebRuntime: false,
   server: {
     url: 'https://c0cd82cc-b785-457d-b930-187a96264a58.lovableproject.com?forceHideBadge=true',
     cleartext: true
