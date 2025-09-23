@@ -8,86 +8,108 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* ZKPresence Festival Theme Design System */
-    --background: 225 15% 3%;
-    --foreground: 280 15% 95%;
+    /* Web3 Dark Theme */
+    --background: 220 26% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 230 20% 6%;
-    --card-foreground: 280 15% 95%;
+    --card: 220 26% 6%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 230 20% 6%;
-    --popover-foreground: 280 15% 95%;
+    --popover: 220 26% 6%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 280 100% 70%;
-    --primary-foreground: 225 15% 3%;
-    --primary-glow: 280 100% 85%;
+    /* Crypto Purple/Blue Gradient Primary */
+    --primary: 259 83% 65%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 272 87% 75%;
 
-    --secondary: 330 80% 65%;
-    --secondary-foreground: 225 15% 3%;
+    --secondary: 220 26% 12%;
+    --secondary-foreground: 210 40% 98%;
 
-    --accent: 180 100% 70%;
-    --accent-foreground: 225 15% 3%;
+    --muted: 220 26% 12%;
+    --muted-foreground: 215 20% 65%;
 
-    --festival-orange: 25 100% 65%;
-    --festival-pink: 320 100% 75%;
-    --festival-cyan: 180 100% 70%;
+    --accent: 259 83% 65%;
+    --accent-foreground: 210 40% 98%;
 
-    --muted: 230 20% 12%;
-    --muted-foreground: 240 15% 60%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --success: 140 100% 50%;
-    --success-foreground: 225 15% 3%;
+    --border: 220 26% 12%;
+    --input: 220 26% 12%;
+    --ring: 259 83% 65%;
 
-    --warning: 45 100% 60%;
-    --warning-foreground: 225 15% 3%;
+    --radius: 0.75rem;
 
-    --destructive: 0 100% 65%;
-    --destructive-foreground: 225 15% 3%;
+        /* Enhanced mobile-first design system */
+        --gradient-primary: linear-gradient(135deg, hsl(259 83% 65%), hsl(272 87% 75%));
+        --gradient-secondary: linear-gradient(135deg, hsl(220 26% 6%), hsl(220 26% 12%));
+        --gradient-hero: linear-gradient(135deg, hsl(220 26% 4%) 0%, hsl(220 26% 8%) 50%, hsl(220 26% 4%) 100%);
+        --gradient-card: linear-gradient(135deg, hsl(220 26% 6% / 0.8), hsl(220 26% 12% / 0.8));
+        
+        /* Enhanced glow effects for brand identity */
+        --glow-primary: 0 0 40px hsl(259 83% 65% / 0.3);
+        --glow-secondary: 0 0 20px hsl(272 87% 75% / 0.2);
+        --shadow-elevated: 0 10px 30px -5px hsl(220 26% 4% / 0.3);
+        
+        /* Smooth transitions for professional feel */
+        --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-glow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --border: 230 20% 15%;
-    --input: 230 20% 15%;
-    --ring: 280 100% 70%;
+    --sidebar-background: 0 0% 98%;
 
-    --radius: 1.2rem;
+    --sidebar-foreground: 240 5.3% 26.1%;
 
-    /* Festival Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(320 100% 75%));
-    --gradient-secondary: linear-gradient(135deg, hsl(320 100% 75%), hsl(25 100% 65%));
-    --gradient-accent: linear-gradient(135deg, hsl(180 100% 70%), hsl(280 100% 70%));
-    --gradient-stage: linear-gradient(180deg, hsl(230 20% 6%), hsl(280 100% 70% / 0.1));
-    --gradient-crowd: linear-gradient(45deg, hsl(320 100% 75% / 0.3), hsl(180 100% 70% / 0.3));
+    --sidebar-primary: 240 5.9% 10%;
 
-    /* Festival Shadows */
-    --shadow-neon: 0 0 30px hsl(280 100% 70% / 0.5), 0 0 60px hsl(320 100% 75% / 0.3);
-    --shadow-stage: 0 8px 32px hsl(280 100% 70% / 0.4);
-    --shadow-card: 0 4px 24px hsl(225 15% 3% / 0.6);
+    --sidebar-primary-foreground: 0 0% 98%;
 
-    /* Mobile specific */
-    --tab-height: 80px;
-    --safe-area-bottom: env(safe-area-inset-bottom);
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    /* Already dark by default - maintain same values */
-    --background: 210 11% 6%;
-    --foreground: 213 31% 91%;
-    --card: 217 19% 8%;
-    --card-foreground: 213 31% 91%;
-    --popover: 217 19% 8%;
-    --popover-foreground: 213 31% 91%;
-    --primary: 262 83% 58%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217 19% 12%;
-    --secondary-foreground: 213 31% 91%;
-    --muted: 217 19% 12%;
-    --muted-foreground: 217 10% 46%;
-    --accent: 217 19% 12%;
-    --accent-foreground: 213 31% 91%;
-    --destructive: 0 84% 60%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217 19% 15%;
-    --input: 217 19% 15%;
-    --ring: 262 83% 58%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -97,179 +119,6 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    @apply dark; /* Force dark theme */
-  }
-
-  html {
-    @apply dark; /* Force dark theme on html as well */
-  }
-
-  /* Mobile-first animations */
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.4s ease-out;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.3s ease-out;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes slideUp {
-    from { 
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to { 
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes scaleIn {
-    from { 
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to { 
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  /* Mobile safe areas */
-  .safe-bottom {
-    padding-bottom: calc(1rem + var(--safe-area-bottom));
-  }
-
-  /* Festival Gradient backgrounds */
-  .bg-gradient-primary {
-    background: var(--gradient-primary);
-  }
-
-  .bg-gradient-secondary {
-    background: var(--gradient-secondary);
-  }
-
-  .bg-gradient-accent {
-    background: var(--gradient-accent);
-  }
-
-  .bg-gradient-stage {
-    background: var(--gradient-stage);
-  }
-
-  .bg-gradient-crowd {
-    background: var(--gradient-crowd);
-  }
-
-  /* Festival Glow effects */
-  .glow-neon {
-    box-shadow: var(--shadow-neon);
-  }
-
-  .glow-stage {
-    box-shadow: var(--shadow-stage);
-  }
-
-  .shadow-card {
-    box-shadow: var(--shadow-card);
-  }
-
-  /* Festival animations */
-  .pulse-neon {
-    animation: pulseNeon 2s ease-in-out infinite alternate;
-  }
-
-  .float-animation {
-    animation: floatUp 3s ease-in-out infinite;
-  }
-
-  .glow-pulse {
-    animation: glowPulse 2s ease-in-out infinite alternate;
-  }
-
-  .sparkle-animation {
-    animation: sparkle 1.5s ease-in-out infinite;
-  }
-
-  .stage-lights {
-    animation: stageLights 4s ease-in-out infinite;
-  }
-
-  .nft-reveal {
-    animation: nftReveal 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-
-  .concert-wave {
-    animation: concertWave 3s ease-in-out infinite;
-  }
-
-  @keyframes pulseNeon {
-    from { 
-      box-shadow: var(--shadow-neon);
-    }
-    to { 
-      box-shadow: 0 0 20px hsl(280 100% 70% / 0.8), 0 0 40px hsl(320 100% 75% / 0.6);
-    }
-  }
-
-  @keyframes floatUp {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-10px) rotate(1deg); }
-    66% { transform: translateY(-5px) rotate(-1deg); }
-  }
-
-  @keyframes glowPulse {
-    from { 
-      box-shadow: 0 0 15px hsl(280 100% 70% / 0.3);
-      transform: scale(1);
-    }
-    to { 
-      box-shadow: 0 0 30px hsl(280 100% 70% / 0.6), 0 0 60px hsl(320 100% 75% / 0.4);
-      transform: scale(1.02);
-    }
-  }
-
-  @keyframes sparkle {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.1); }
-  }
-
-  @keyframes stageLights {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  @keyframes nftReveal {
-    0% { 
-      opacity: 0; 
-      transform: scale(0.8) rotateY(90deg);
-      filter: blur(4px);
-    }
-    50% {
-      transform: scale(1.05) rotateY(45deg);
-    }
-    100% { 
-      opacity: 1; 
-      transform: scale(1) rotateY(0deg);
-      filter: blur(0px);
-    }
-  }
-
-  @keyframes concertWave {
-    0%, 100% { transform: translateX(0) scaleY(1); }
-    25% { transform: translateX(-5px) scaleY(1.02); }
-    50% { transform: translateX(0) scaleY(0.98); }
-    75% { transform: translateX(5px) scaleY(1.02); }
+    @apply bg-background text-foreground font-inter;
   }
 }

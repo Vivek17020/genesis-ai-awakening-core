@@ -18,29 +18,92 @@ export type Database = {
         Row: {
           created_at: string
           display_name: string | null
+          email: string | null
           id: string
-          phone_number: string | null
           updated_at: string
           user_id: string
-          wallet_address: string | null
+          wallet_address: string
         }
         Insert: {
           created_at?: string
           display_name?: string | null
+          email?: string | null
           id?: string
-          phone_number?: string | null
           updated_at?: string
           user_id: string
-          wallet_address?: string | null
+          wallet_address: string
         }
         Update: {
           created_at?: string
           display_name?: string | null
+          email?: string | null
           id?: string
-          phone_number?: string | null
           updated_at?: string
           user_id?: string
-          wallet_address?: string | null
+          wallet_address?: string
+        }
+        Relationships: []
+      }
+      transaction_notifications: {
+        Row: {
+          id: string
+          notification_type: string
+          sent_at: string
+          transaction_hash: string
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          notification_type: string
+          sent_at?: string
+          transaction_hash: string
+          user_id: string
+        }
+        Update: {
+          id?: string
+          notification_type?: string
+          sent_at?: string
+          transaction_hash?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_settings: {
+        Row: {
+          created_at: string
+          default_currency: string
+          email_notifications: boolean
+          id: string
+          notifications_enabled: boolean
+          price_alerts: boolean
+          theme: string
+          transaction_alerts: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          default_currency?: string
+          email_notifications?: boolean
+          id?: string
+          notifications_enabled?: boolean
+          price_alerts?: boolean
+          theme?: string
+          transaction_alerts?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          default_currency?: string
+          email_notifications?: boolean
+          id?: string
+          notifications_enabled?: boolean
+          price_alerts?: boolean
+          theme?: string
+          transaction_alerts?: boolean
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
