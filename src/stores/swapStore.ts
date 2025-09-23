@@ -43,7 +43,7 @@ const initialTokens: Token[] = [
   {
     symbol: "ETH",
     name: "Ethereum",
-    icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
+    icon: "💎",
     balance: "2.4567",
     price: 2678.34,
     address: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
@@ -51,9 +51,9 @@ const initialTokens: Token[] = [
   },
   {
     symbol: "USDC",
-    name: "USD Coin",
-    icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png",
-    balance: "1,250.00",
+    name: "USD Coin", 
+    icon: "💵",
+    balance: "7829.877878",
     price: 1.00,
     address: "0xA0b86a33E6441E71de9E6A8669B3aBbEe9B4A6a5",
     decimals: 6
@@ -61,8 +61,8 @@ const initialTokens: Token[] = [
   {
     symbol: "MATIC",
     name: "Polygon",
-    icon: "https://cryptologos.cc/logos/polygon-matic-logo.png",
-    balance: "456.789",
+    icon: "🟣",
+    balance: "456.789000",
     price: 0.87,
     address: "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
     decimals: 18
@@ -70,8 +70,8 @@ const initialTokens: Token[] = [
   {
     symbol: "LINK",
     name: "Chainlink",
-    icon: "https://cryptologos.cc/logos/chainlink-link-logo.png",
-    balance: "89.123",
+    icon: "🔗",
+    balance: "89.123000",
     price: 13.45,
     address: "0x514910771AF9Ca656af840dff83E8264EcF986CA",
     decimals: 18

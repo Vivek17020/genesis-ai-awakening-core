@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerClose } from "@/components/ui/drawer";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Wallet, TrendingUp, TrendingDown, Eye, EyeOff, Plus, Send, ArrowUpDown, Copy, X, RefreshCw, AlertCircle, Loader2, Search, ChevronUp, ChevronDown } from "lucide-react";
+import { Wallet, TrendingUp, TrendingDown, Eye, EyeOff, Plus, Send, ArrowUpDown, Copy, X, RefreshCw, AlertCircle, Loader2, Search, ChevronUp, ChevronDown, Sparkles } from "lucide-react";
 import { usePortfolioData, UnifiedToken } from "@/hooks/usePortfolioData";
 import { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
@@ -14,6 +14,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import CurrencySelector, { Currency } from "@/components/CurrencySelector";
 import { useCurrencyConverter } from "@/hooks/useCurrencyConverter";
 import TokenChart from "@/components/TokenChart";
+import TokenIcon from "@/components/TokenIcon";
 
 export default function Assets() {
   const { 
@@ -145,20 +146,21 @@ export default function Assets() {
 
       {/* Portfolio Overview Cards */}
       <div className="grid gap-4 md:grid-cols-4 mb-6">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
+        <Card className="relative overflow-hidden bg-gradient-card border border-primary/20">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary-glow/5" />
+          <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-foreground">Total Balance</CardTitle>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsBalanceVisible(!isBalanceVisible)}
-              className="h-8 w-8 p-0"
+              className="h-8 w-8 p-0 hover:bg-primary/10 transition-colors"
             >
               {isBalanceVisible ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
             </Button>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
+          <CardContent className="relative">
+            <div className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
               {isLoading ? (
                 <div className="flex items-center space-x-2 text-muted-foreground">
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -170,51 +172,55 @@ export default function Assets() {
                 "••••••"
               )}
             </div>
-            <p className={`text-xs flex items-center ${
-              portfolio24hChange >= 0 ? 'text-green-600' : 'text-red-600'
+            <p className={`text-sm flex items-center font-medium ${
+              portfolio24hChange >= 0 ? 'text-green-400' : 'text-red-400'
             }`}>
               {!isLoading && (
                 <>
                   {portfolio24hChange >= 0 ? (
-                    <TrendingUp className="h-3 w-3 mr-1" />
+                    <TrendingUp className="h-4 w-4 mr-1" />
                   ) : (
-                    <TrendingDown className="h-3 w-3 mr-1" />
+                    <TrendingDown className="h-4 w-4 mr-1" />
                   )}
                   {formatPercentage(portfolio24hChange)}
+                  <span className="text-xs text-muted-foreground ml-1">24h</span>
                 </>
               )}
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-card border border-border/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Assets</CardTitle>
+            <CardTitle className="text-sm font-medium flex items-center">
+              <Sparkles className="h-4 w-4 mr-2 text-primary" />
+              Assets
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-foreground">
               {isLoading ? "..." : tokens.length}
             </div>
             <p className="text-xs text-muted-foreground">Different tokens</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-card border border-border/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Network</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">Ethereum</div>
+            <div className="text-2xl font-bold text-foreground">Ethereum</div>
             <p className="text-xs text-muted-foreground">Mainnet</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-card border border-border/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Wallet</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm font-mono">
+            <div className="text-sm font-mono text-foreground">
               {address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "Not connected"}
             </div>
             <p className="text-xs text-muted-foreground">Connected</p>
@@ -223,16 +229,16 @@ export default function Assets() {
       </div>
 
       {/* Quick Actions */}
-      <div className="flex gap-2 mb-6">
-        <Button className="flex-1">
+      <div className="flex gap-3 mb-6">
+        <Button className="flex-1 bg-gradient-to-r from-primary to-primary-glow hover:from-primary/90 hover:to-primary-glow/90 transition-all duration-300 shadow-lg hover:shadow-primary/25">
           <Send className="h-4 w-4 mr-2" />
           Send
         </Button>
-        <Button variant="outline" className="flex-1">
+        <Button variant="outline" className="flex-1 border-primary/30 hover:bg-primary/10 transition-all duration-300">
           <Plus className="h-4 w-4 mr-2" />
           Receive
         </Button>
-        <Button variant="outline" className="flex-1">
+        <Button variant="outline" className="flex-1 border-primary/30 hover:bg-primary/10 transition-all duration-300">
           <ArrowUpDown className="h-4 w-4 mr-2" />
           Swap
         </Button>
@@ -252,10 +258,10 @@ export default function Assets() {
       </div>
 
       {/* Assets Table */}
-      <Card>
+      <Card className="bg-gradient-card border border-border/50 backdrop-blur-sm">
         <CardHeader>
-          <CardTitle>Your Assets</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-foreground">Your Assets</CardTitle>
+          <CardDescription className="text-muted-foreground">
             All your token balances and their current values
           </CardDescription>
         </CardHeader>
@@ -319,32 +325,39 @@ export default function Assets() {
                 filteredAndSortedTokens.map((token) => (
                   <TableRow 
                     key={token.symbol} 
-                    className="cursor-pointer hover:bg-muted/50"
+                    className="cursor-pointer hover:bg-primary/5 transition-all duration-200 border-b border-border/30"
                     onClick={() => handleTokenClick(token)}
                   >
-                    <TableCell className="flex items-center space-x-3">
-                      <div className="text-2xl">{token.logo}</div>
+                    <TableCell className="flex items-center space-x-3 py-4">
+                      <TokenIcon 
+                        src={token.logo}
+                        symbol={token.symbol}
+                        name={token.name}
+                        size="lg"
+                      />
                       <div>
-                        <div className="font-medium">{token.symbol}</div>
+                        <div className="font-semibold text-foreground">{token.symbol}</div>
                         <div className="text-sm text-muted-foreground">{token.name}</div>
                       </div>
                     </TableCell>
-                    <TableCell>
-                      <div className="text-right">
-                        <div className="font-medium">{token.balance}</div>
+                    <TableCell className="text-right">
+                      <div>
+                        <div className="font-semibold text-foreground">{token.balance}</div>
                         <div className="text-sm text-muted-foreground">{formatCurrency(token.price)}</div>
                       </div>
                     </TableCell>
                     <TableCell className="text-right">
-                      {isBalanceVisible ? formatCurrency(token.fiatValue) : "••••••"}
+                      <div className="font-semibold text-foreground">
+                        {isBalanceVisible ? formatCurrency(token.fiatValue) : "••••••"}
+                      </div>
                     </TableCell>
                     <TableCell className="text-right">
                       <Badge 
                         variant={token.change24h >= 0 ? "default" : "destructive"}
-                        className={`${
+                        className={`font-medium ${
                           token.change24h >= 0 
-                            ? "bg-green-100 text-green-800 hover:bg-green-100" 
-                            : "bg-red-100 text-red-800 hover:bg-red-100"
+                            ? "bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/20" 
+                            : "bg-red-500/20 text-red-400 border-red-500/30 hover:bg-red-500/20"
                         }`}
                       >
                         {formatPercentage(token.change24h)}
@@ -360,13 +373,21 @@ export default function Assets() {
 
       {/* Enhanced Token Detail Drawer */}
       <Drawer open={!!selectedToken} onOpenChange={() => setSelectedToken(null)}>
-        <DrawerContent className="max-h-[90vh] overflow-y-auto">
+        <DrawerContent className="max-h-[90vh] overflow-y-auto bg-gradient-to-b from-background via-background/95 to-background border-t border-primary/20">
           {selectedToken && (
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-foreground">Token Details</h2>
+                <div className="flex items-center space-x-3">
+                  <TokenIcon 
+                    src={selectedToken.logo}
+                    symbol={selectedToken.symbol}
+                    name={selectedToken.name}
+                    size="lg"
+                  />
+                  <h2 className="text-2xl font-bold text-foreground">Token Details</h2>
+                </div>
                 <DrawerClose asChild>
-                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-destructive/20 hover:text-destructive">
                     <X className="h-4 w-4" />
                   </Button>
                 </DrawerClose>
@@ -378,12 +399,12 @@ export default function Assets() {
               />
               
               {/* Action Buttons */}
-              <div className="flex gap-3 mt-6 pt-6 border-t border-border">
-                <Button className="flex-1 bg-primary hover:bg-primary/90">
+              <div className="flex gap-3 mt-6 pt-6 border-t border-primary/20">
+                <Button className="flex-1 bg-gradient-to-r from-primary to-primary-glow hover:from-primary/90 hover:to-primary-glow/90 transition-all duration-300 shadow-lg hover:shadow-primary/25">
                   <Send className="h-4 w-4 mr-2" />
                   Send {selectedToken.symbol}
                 </Button>
-                <Button variant="outline" className="flex-1">
+                <Button variant="outline" className="flex-1 border-primary/30 hover:bg-primary/10 transition-all duration-300">
                   <ArrowUpDown className="h-4 w-4 mr-2" />
                   Swap {selectedToken.symbol}
                 </Button>

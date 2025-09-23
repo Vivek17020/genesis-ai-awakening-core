@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { UnifiedToken } from "@/hooks/usePortfolioData";
 import { useCurrencyConverter } from "@/hooks/useCurrencyConverter";
 import { Currency } from "./CurrencySelector";
+import TokenIcon from "./TokenIcon";
 
 type ChartPeriod = '24h' | '7d' | '30d';
 
@@ -69,19 +70,25 @@ export default function TokenChart({ token, selectedCurrency }: TokenChartProps)
   return (
     <div className="space-y-6">
       {/* Enhanced Token Header */}
-      <div className="flex items-center space-x-4 p-4 rounded-lg bg-gradient-card border border-border">
-        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-3xl">
-          {token.logo}
-        </div>
+      <div className="flex items-center space-x-4 p-6 rounded-xl bg-gradient-to-r from-gradient-card via-card/80 to-gradient-card border border-primary/20 backdrop-blur-sm">
+        <TokenIcon 
+          src={token.logo}
+          symbol={token.symbol}
+          name={token.name}
+          size="xl"
+          className="shadow-lg shadow-primary/25"
+        />
         <div className="flex-1">
           <h2 className="text-2xl font-bold text-foreground">{token.name}</h2>
-          <p className="text-muted-foreground">{token.symbol}</p>
-          <div className="flex items-center space-x-2 mt-1">
-            <span className="text-2xl font-bold text-foreground">{formatCurrency(token.price)}</span>
-            <span className={`text-sm px-2 py-1 rounded-full ${
+          <p className="text-muted-foreground font-medium">{token.symbol}</p>
+          <div className="flex items-center space-x-3 mt-2">
+            <span className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+              {formatCurrency(token.price)}
+            </span>
+            <span className={`text-sm px-3 py-1.5 rounded-full font-medium border ${
               token.change24h >= 0 
-                ? 'bg-green-500/20 text-green-400' 
-                : 'bg-red-500/20 text-red-400'
+                ? 'bg-green-500/20 text-green-400 border-green-500/30' 
+                : 'bg-red-500/20 text-red-400 border-red-500/30'
             }`}>
               {token.change24h >= 0 ? '+' : ''}{token.change24h.toFixed(2)}%
             </span>
@@ -105,11 +112,11 @@ export default function TokenChart({ token, selectedCurrency }: TokenChartProps)
       </div>
 
       {/* Enhanced Price Chart */}
-      <div className="space-y-2">
+      <div className="space-y-4">
         <h3 className="text-lg font-semibold text-foreground">
           Price Chart ({selectedPeriod})
         </h3>
-        <div className="h-64 w-full p-4 rounded-lg bg-card border border-border">
+        <div className="h-72 w-full p-6 rounded-xl bg-gradient-to-b from-card/50 via-card to-card/50 border border-primary/20 backdrop-blur-sm">
           <ChartContainer
             config={{
               price: {
@@ -120,23 +127,30 @@ export default function TokenChart({ token, selectedCurrency }: TokenChartProps)
             className="h-full w-full"
           >
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={chartData} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
+              <LineChart data={chartData} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
+                <defs>
+                  <linearGradient id="priceGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.05}/>
+                  </linearGradient>
+                </defs>
                 <XAxis 
                   dataKey="time" 
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
+                  tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
                 />
                 <YAxis 
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
-                  domain={['dataMin', 'dataMax']}
-                  tickFormatter={(value) => `$${value.toFixed(0)}`}
+                  tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
+                  domain={['dataMin - 0.01', 'dataMax + 0.01']}
+                  tickFormatter={(value) => `$${value.toFixed(2)}`}
                 />
                 <ChartTooltip 
                   content={<ChartTooltipContent 
                     formatter={(value) => [formatCurrency(Number(value)), "Price"]}
+                    className="bg-background/95 backdrop-blur-sm border border-primary/20"
                   />} 
                 />
                 <Line
@@ -146,7 +160,8 @@ export default function TokenChart({ token, selectedCurrency }: TokenChartProps)
                   strokeWidth={3}
                   dot={false}
                   strokeLinecap="round"
-                  filter="drop-shadow(0 0 6px hsl(var(--primary) / 0.3))"
+                  fill="url(#priceGradient)"
+                  filter="drop-shadow(0 0 8px hsl(var(--primary) / 0.4))"
                 />
               </LineChart>
             </ResponsiveContainer>
