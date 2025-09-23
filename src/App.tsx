@@ -8,6 +8,7 @@ import { config } from '@/config/wagmi';
 import { WalletProvider } from "@/contexts/WalletContext";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Index from "./pages/Index";
+import About from "./pages/About";
 import Assets from "./pages/Assets";
 import Swap from "./pages/Swap";
 import Bridge from "./pages/Bridge";
@@ -29,6 +30,7 @@ const App = () => (
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/app/assets" element={<AppShell><ErrorBoundary><Assets /></ErrorBoundary></AppShell>} />
                 <Route path="/app/swap" element={<AppShell><ErrorBoundary><Swap /></ErrorBoundary></AppShell>} />
                 <Route path="/app/bridge" element={<AppShell><ErrorBoundary><Bridge /></ErrorBoundary></AppShell>} />
