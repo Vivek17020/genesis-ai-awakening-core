@@ -1,73 +1,121 @@
-# Welcome to your Lovable project
+# OneWallet - Unified Multi-Chain Crypto Wallet Dashboard
 
-## Project info
+A modern, unified dashboard for managing multiple blockchain wallets with multi-chain support for seamless DeFi experience.
 
-**URL**: https://lovable.dev/projects/da5d732d-82de-499a-b818-be0a2a2e4035
+## Features
 
-## How can I edit this code?
+- **Multi-Chain Support**: Connect and manage wallets across multiple blockchain networks
+- **Asset Management**: Track your crypto portfolio with real-time prices and charts
+- **Token Swapping**: Seamless token swaps with best rate aggregation
+- **Bridge Functionality**: Cross-chain asset transfers
+- **Transaction History**: Complete transaction tracking and analytics
+- **Settings & Preferences**: Customizable user experience
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+This project is built with modern web technologies:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/da5d732d-82de-499a-b818-be0a2a2e4035) and start prompting.
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **Build Tool**: Vite for fast development and optimized builds
+- **UI Components**: Radix UI primitives with custom styling
+- **Blockchain Integration**: Wagmi for Ethereum interactions
+- **State Management**: Zustand for global state
+- **Backend**: Supabase for data persistence
+- **Deployment**: Vercel with automatic deployments
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
+- Node.js 18+ and npm
+- Git
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+1. Clone the repository:
+```bash
 git clone <YOUR_GIT_URL>
+cd onewallet
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies:
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Development
 
-**Use GitHub Codespaces**
+### Project Structure
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Main application pages
+├── hooks/         # Custom React hooks
+├── stores/        # Zustand state stores
+├── lib/           # Utility functions
+├── types/         # TypeScript type definitions
+└── integrations/  # External service integrations
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
 
-## What technologies are used for this project?
+### Code Quality
+The project uses:
+- ESLint for code linting
+- TypeScript for type safety
+- Prettier for code formatting (configure in your IDE)
 
-This project is built with:
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The application can be deployed to various platforms:
 
-## How can I deploy this project?
+### Vercel (Recommended)
+1. Connect your repository to Vercel
+2. Configure environment variables
+3. Deploy automatically on push to main
 
-Simply open [Lovable](https://lovable.dev/projects/da5d732d-82de-499a-b818-be0a2a2e4035) and click on Share -> Publish.
+### Manual Deployment
+```bash
+npm run build
+# Deploy the dist/ folder to your hosting provider
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Environment Variables
 
-Yes, you can!
+Required environment variables:
+- `VITE_SUPABASE_URL` - Supabase project URL
+- `VITE_SUPABASE_PUBLISHABLE_KEY` - Supabase public API key
+- `VITE_SUPABASE_PROJECT_ID` - Supabase project ID
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Contributing
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is proprietary software. All rights reserved.
+
+## Support
+
+For support and questions, please contact the development team.
